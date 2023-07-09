@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pelajaran dan Jam Waktu</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-top: 40px;
+    }
+
+    .foto-sekolah-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .foto-jisc {
+      height: 136px;
+    }
+
+    .foto-fkui {
+      width: 340px;
+    }
+
+    #lessons {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    #lessons li {
+      margin: 10px;
+    }
+
+    #lessons li a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    #lessons li a:hover {
+      background-color: #666;
+    }
+
+    #clock {
+      font-size: 48px;
+      text-align: center;
+      color: #333;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="foto-sekolah-container">
+    <img src="jisc.png" class="foto-jisc">
+    <img src="fkui.png" class="foto-fkui">
+  </div>
+  <h1>Jam Waktu</h1>
+  <div id="clock"></div>  
+
+  <h1>Pelajaran</h1>
+  <ul id="lessons">
+    <li><a target="_blank" href="https://www.youtube.com/playlist?list=PL8m0MlryCdk_OARlnTpJ7xKjDu8u6CqFp">Matematika Wajib</a></li>
+    <li><a target="_blank" href="https://www.youtube.com/playlist?list=PL8m0MlryCdk-rOcUj70FLRP1cer_4vsiU">Matematika Minat</a></li>
+    <li><a href="https://www.example.com/pelajaran3">PPKN</a></li>
+    <li><a href="https://www.example.com/pelajaran3">Fisika</a></li>
+    <li><a href="https://www.example.com/pelajaran3">Biologi</a></li>
+    <li><a href="https://www.example.com/pelajaran3">Kimia</a></li>
+    <li><a href="https://www.example.com/pelajaran3">English</a></li>
+    <li><a href="https://www.example.com/pelajaran3">Seni</a></li>
+    <li><a href="https://www.example.com/pelajaran3">Agama</a></li>
+  </ul>
+
+  <script>
+    // Fungsi untuk mendapatkan waktu saat ini
+    function getCurrentTime() {
+      const date = new Date();
+      const hours = date.getHours();
+      const minutes = date.getMinutes();
+      const seconds = date.getSeconds();
+      return {
+        hours: hours < 10 ? '0' + hours : hours,
+        minutes: minutes < 10 ? '0' + minutes : minutes,
+        seconds: seconds < 10 ? '0' + seconds : seconds
+      };
+    }
+
+    // Fungsi untuk memperbarui jam waktu
+    function updateClock() {
+      const time = getCurrentTime();
+      document.getElementById('clock').textContent = time.hours + ':' + time.minutes + ':' + time.seconds;
+    }
+
+    // Fungsi untuk menganimasikan jam waktu
+    function animateClock() {
+      const clock = document.getElementById('clock');
+      clock.style.transition = 'all 0.5s';
+      clock.style.transform = 'scale(1.2)';
+      setTimeout(function() {
+        clock.style.transform = 'scale(1)';
+      }, 500);
+    }
+
+    // Memperbarui jam waktu setiap detik
+    setInterval(function() {
+      updateClock();
+      animateClock();
+    }, 1000);
+  </script>
+</body>
+</html>
